@@ -3,6 +3,9 @@
 Готовый цветной handler для стандартного `log/slog` в Go, который делает логи в терминале удобными для чтения с первого взгляда.
 
 <p align="center">
+  <a href="https://github.com/golub15/slog_color/actions/workflows/test.yml">
+    <img src="https://github.com/golub15/slog_color/actions/workflows/test.yml/badge.svg" alt="Tests" />
+  </a>
   <img src="https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat-square&logo=go" alt="Версия Go" />
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="Лицензия" />
 </p>
