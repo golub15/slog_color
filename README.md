@@ -6,6 +6,10 @@
   <a href="https://github.com/golub15/slog_color/actions/workflows/test.yml">
     <img src="https://github.com/golub15/slog_color/actions/workflows/test.yml/badge.svg" alt="Tests" />
   </a>
+  <a href="https://pkg.go.dev/github.com/golub15/slog_color#section-documentation">
+    <img src="https://pkg.go.dev/badge/github.com/golub15/slog_color.svg" alt="Go Reference" />
+  </a>
+  <img src="https://img.shields.io/badge/go.mod-v0.0.1-00ADD8?style=flat-square" alt="Version" />
   <img src="https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat-square&logo=go" alt="Версия Go" />
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="Лицензия" />
 </p>
