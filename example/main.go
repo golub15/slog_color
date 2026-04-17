@@ -42,6 +42,8 @@ type ServerConfig struct {
 	MaxConns int    `json:"max_conns"`
 }
 
+type ctxKey string
+
 func main() {
 	// ──────────────────────────────────────────────────────
 	// 1. Базовое использование — все уровни логирования
@@ -184,6 +186,25 @@ func main() {
 	testLog := logger.NewTestLogger()
 	testLog.Info("запуск теста", "suite", "integration", "case", "happy path")
 	testLog.Debug("проверка завершена", "assertions", 12, "passed", true)
+
+	// ──────────────────────────────────────────────────────
+	// 11. Контекст в логировании (InfoContext + SetHook)
+	// ──────────────────────────────────────────────────────
+
+	section("11. Контекст в логировании (InfoContext + SetHook)")
+
+	const requestIDKey ctxKey = "request_id"
+	ctx := context.WithValue(context.Background(), requestIDKey, "req-ctx-777")
+
+	contextHandler := logger.NewColorHandler(os.Stdout)
+	contextHandler.SetHook(func(ctx context.Context, r slog.Record) {
+		if requestID, ok := ctx.Value(requestIDKey).(string); ok {
+			fmt.Printf("  🧭 HOOK: request_id=%s message=%q\n", requestID, r.Message)
+		}
+	})
+
+	contextLog := slog.New(contextHandler)
+	contextLog.ErrorContext(ctx, "ошибка в обработчике запроса", "endpoint", "/api/payments", "status", 500)
 
 	fmt.Println()
 }
